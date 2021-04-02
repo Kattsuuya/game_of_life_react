@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Cell {
+	display: inline-block;
+	border: 0.5px solid black;
+	width: 10px;
+	height: 10px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+.Cell:hover {
+	background-color: greenyellow;
+}
+
+.Cell.isActive {
+	background-color: #61dafb;
+}
+
+.Grid {
+	width: 150px;
+	line-height: 0;
+	margin: auto;
+	box-shadow: 0px 0px 20px white;
+	margin-top: 20px;
+}
