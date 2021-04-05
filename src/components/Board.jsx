@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Colors } from "react-foundation";
 
 export default class Board extends Component {
   constructor(props) {
@@ -165,11 +166,21 @@ export default class Board extends Component {
     const { generation } = this.state;
     return (
       <div>
-        <button onClick={this.step}>Step</button>
-        <button onClick={this.seed}>Randomize</button>
-        <button onClick={this.play}>Play</button>
-        <button onClick={this.pause}>Pause</button>
-        <button onClick={this.reset}>Reset</button>
+        <Button color={Colors.SECONDARY} onClick={this.step}>
+          Step
+        </Button>
+        <Button color={Colors.SECONDARY} onClick={this.seed}>
+          Randomize
+        </Button>
+        <Button color={Colors.SECONDARY} onClick={this.play}>
+          Play
+        </Button>
+        <Button color={Colors.SECONDARY} onClick={this.pause}>
+          Pause
+        </Button>
+        <Button color={Colors.SECONDARY} onClick={this.reset}>
+          Reset
+        </Button>
         {this.display()}
         <p>Generation: {generation}</p>
       </div>
