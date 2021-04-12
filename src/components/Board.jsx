@@ -10,6 +10,7 @@ export default class Board extends Component {
       cells: [],
       generation: 0,
       intervalId: 0,
+      interval: 100,
     };
     this.makeCells = this.makeCells.bind(this);
     this.step = this.step.bind(this);
@@ -102,8 +103,8 @@ export default class Board extends Component {
    */
   play() {
     clearInterval(this.state.intervalId);
-    // 0.1秒ごとにstep()を実行する
-    const intervalId = setInterval(this.step, 100);
+    // 一定間隔ごとにstep()を実行する
+    const intervalId = setInterval(this.step, this.state.interval);
     this.setState({ intervalId });
   }
 
