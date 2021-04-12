@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-foundation": "^0.9.6",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-react": "^7.23.1",
