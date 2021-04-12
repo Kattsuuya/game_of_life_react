@@ -10,7 +10,7 @@ export default class Board extends Component {
       cells: [],
       generation: 0,
       intervalId: 0,
-      interval: 100,
+      intervalSec: 0.1,
     };
     this.makeCells = this.makeCells.bind(this);
     this.step = this.step.bind(this);
@@ -21,6 +21,7 @@ export default class Board extends Component {
     this.reset = this.reset.bind(this);
     this.toggleCell = this.toggleCell.bind(this);
     this.display = this.display.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -104,7 +105,8 @@ export default class Board extends Component {
   play() {
     clearInterval(this.state.intervalId);
     // 一定間隔ごとにstep()を実行する
-    const intervalId = setInterval(this.step, this.state.interval);
+    let intervalMs = this.state.intervalSec * 1000;
+    const intervalId = setInterval(this.step, intervalMs);
     this.setState({ intervalId });
   }
 
@@ -163,6 +165,13 @@ export default class Board extends Component {
     );
   }
 
+  /**
+   * フォームに入力されたときに呼ばれる関数
+   */
+  handleChange(event) {
+    this.setState({ intervalSec: event.target.value });
+  }
+
   render() {
     const { generation } = this.state;
     return (
@@ -182,6 +191,14 @@ export default class Board extends Component {
         <Button color={Colors.SECONDARY} onClick={this.reset}>
           Reset
         </Button>
+        <label>
+          Interval [sec]:
+          <input
+            type="text"
+            value={this.state.intervalSec}
+            onChange={this.handleChange}
+          />
+        </label>
         {this.display()}
         <p>Generation: {generation}</p>
       </div>
